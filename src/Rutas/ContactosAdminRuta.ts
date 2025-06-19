@@ -7,7 +7,7 @@ const modelo = new ContactosModelo();
 
 router.get('/contacts', isAuthenticated, isAdmin, async (req, res) => {
   const contactos = await modelo.getAllContacts();
-  res.render('contacts', { contactos });
+  res.render('contacts', { contactos, title: 'Contactos - Administración' });
 });
 
 export default router;
