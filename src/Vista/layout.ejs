@@ -5,7 +5,7 @@
   <title><%- title || 'Vestiaire Royal' %></title>
   <meta name="description" content="<%- description || 'Alquiler de ropa de lujo para eventos especiales.' %>">
 
-  <!-- Objet 3 -->
+  <!-- Open Graph -->
   <meta property="og:title" content="<%- ogTitle || title || 'Vestiaire Royal' %>">
   <meta property="og:description" content="<%- ogDescription || description || 'Alquiler de ropa de lujo para eventos especiales.' %>">
   <meta property="og:type" content="website">
@@ -26,8 +26,7 @@
       <a href="/registro">Registro</a>
       <a href="/pago">Pago</a>
       <% if (isAdmin) { %>
-        <a href="/contacts">Contactos</a>
-        <a href="/payments">Pagos</a>
+        <a href="/contacts">Área Administrativa</a>
       <% } %>
       <a href="/login" id="login-link">Iniciar Sesión</a>
       <a href="/api/auth/logout" id="logout-link" style="display:none;">Cerrar Sesión</a>
