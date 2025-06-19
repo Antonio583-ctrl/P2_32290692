@@ -33,6 +33,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'Vista'));
 
 // task-4 punto 4
+app.set('trust proxy', 1);
 app.use(session({
   store: new SQLiteStore({
     db: 'sessions.sqlite',
@@ -43,9 +44,9 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    sameSite: 'lax', // Puedes usar 'strict' si tu app no usa subdominios
-    secure: process.env.NODE_ENV === 'production', // Solo true en producción con HTTPS
-    maxAge: 15 * 60 * 1000 // tiempo expresado en milisegundos (15 minutos)
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production', 
+    maxAge: 15 * 60 * 1000
   }
 }));
 
