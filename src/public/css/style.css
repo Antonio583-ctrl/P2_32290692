@@ -236,3 +236,178 @@ body {
 .register-link a:hover, .login-link a:hover {
   text-decoration: underline;
 }
+
+
+/* --- Estilos para tablas y filtros admin --- */
+.admin-content h1 {
+  color: #222;
+  margin-bottom: 24px;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+}
+
+.admin-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 22px;
+  align-items: center;
+}
+
+.admin-filtros input,
+.admin-filtros select {
+  padding: 8px 14px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafafa;
+  transition: border 0.2s;
+}
+
+.admin-filtros input:focus,
+.admin-filtros select:focus {
+  border: 1.5px solid #3934db;
+  outline: none;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(44,62,80,0.08);
+}
+
+.admin-table th, .admin-table td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.admin-table th {
+  background: #3934db;
+  color: #fff;
+  font-weight: 600;
+  border-bottom: 2px solid #2d2a6e;
+}
+
+.admin-table tr:nth-child(even) {
+  background: #f6f7fb;
+}
+
+.admin-table tr:hover {
+  background: #e9eafd;
+  transition: background 0.2s;
+}
+
+@media (max-width: 900px) {
+  .admin-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .admin-table th, .admin-table td {
+    padding: 10px 6px;
+    font-size: 0.95rem;
+  }
+}
+
+/* --- Layout Admin --- */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f8f8;
+  margin: 0;
+}
+
+.sidebar {
+  width: 240px;
+  background: #23272f;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 0 0 0;
+  box-shadow: 2px 0 12px rgba(44,62,80,0.07);
+}
+
+.sidebar-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 38px;
+}
+
+.sidebar-logo span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.sidebar nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 32px;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid transparent;
+  transition: background 0.18s, border 0.18s, color 0.18s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: rgba(255,255,255,0.08);
+  border-left: 4px solid #d4af37;
+  color: #d4af37;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 48px 5vw 32px 5vw;
+  background: #f8f8f8;
+  min-height: 100vh;
+}
+
+@media (max-width: 900px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 12px 0;
+    box-shadow: none;
+  }
+  .sidebar-logo {
+    display: none;
+  }
+  .sidebar nav {
+    flex-direction: row;
+    gap: 0;
+  }
+  .sidebar nav a {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+  }
+  .sidebar nav a:hover,
+  .sidebar nav a.active {
+    border-bottom: 2px solid #d4af37;
+    border-left: none;
+  }
+  .admin-content {
+    padding: 24px 2vw;
+  }
+}
