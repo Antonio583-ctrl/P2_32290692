@@ -1,5 +1,6 @@
 import express from 'express';
 import session from 'express-session';
+import SQLiteStore from 'connect-sqlite3';
 import ejsMate from 'ejs-mate';
 import passport from 'passport';
 import authRoutes from './auth/auth.routes';
@@ -33,6 +34,10 @@ app.set('views', path.join(__dirname, 'Vista'));
 
 // task-4 punto 4
 app.use(session({
+  store: new (SQLiteStore(session))({
+    db: 'sessions.sqlite',
+    dir: path.join(__dirname, 'db'),
+  }),
   secret: 'your-secret-key',
   resave: false,
   saveUninitialized: false,
