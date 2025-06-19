@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contactos Registrados</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    th { background: #eee; }
+    #busqueda { margin-bottom: 15px; width: 300px; }
+  </style>
+</head>
+<body>
+  <h1>Contactos Registrados</h1>
+  <input type="text" id="busqueda" placeholder="Buscar por nombre o email...">
+  <table id="tabla-contactos">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Comentario</th>
+        <th>IP</th>
+        <th>País</th>
+        <th>Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% contactos.forEach(c => { %>
+        <tr>
+          <td><%= c.nombre %></td>
+          <td><%= c.correo %></td>
+          <td><%= c.comentario %></td>
+          <td><%= c.ip %></td>
+          <td><%= c.pais %></td>
+          <td><%= c.creado_en %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <script>
+    const input = document.getElementById('busqueda');
+    input.addEventListener('input', function() {
+      const filtro = this.value.toLowerCase();
+      document.querySelectorAll('#tabla-contactos tbody tr').forEach(row => {
+        const nombre = row.children[0].textContent.toLowerCase();
+        const correo = row.children[1].textContent.toLowerCase();
+        row.style.display = (nombre.includes(filtro) || correo.includes(filtro)) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

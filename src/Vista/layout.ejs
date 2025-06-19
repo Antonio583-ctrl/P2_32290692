@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%- title || 'Vestiaire Royal' %></title>
+  <meta name="description" content="<%- description || 'Alquiler de ropa de lujo para eventos especiales.' %>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%- ogTitle || title || 'Vestiaire Royal' %>">
+  <meta property="og:description" content="<%- ogDescription || description || 'Alquiler de ropa de lujo para eventos especiales.' %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%- ogUrl || 'https://tusitio.com/' %>">
+  <meta property="og:image" content="<%- ogImage || '/coleccion/Maroon.jpeg' %>">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <% if (typeof extraHead !== 'undefined') { %>
+    <%- extraHead %>
+  <% } %>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">VESTIAIRE ROYAL</div>
+    <nav class="nav-links">
+      <a href="/">Inicio</a>
+      <a href="/catalogo">Catálogo</a>
+      <a href="/registro">Registro</a>
+      <a href="/pago">Pago</a>
+      <% if (isAdmin) { %>
+        <a href="/contacts">Contactos</a>
+        <a href="/payments">Pagos</a>
+      <% } %>
+      <a href="/login" id="login-link">Iniciar Sesión</a>
+      <a href="/api/auth/logout" id="logout-link" style="display:none;">Cerrar Sesión</a>
+    </nav>
+  </header>
+  <main>
+    <%- body %>
+  </main>
+  <% if (typeof showFooter === 'undefined' || showFooter) { %>
+    <footer style="background: #1a1a1a; padding: 2rem; text-align: center; color: white">
+      <p>© 2025 Vestiaire Royal - Todos los derechos reservados</p>
+    </footer>
+  <% } %>
+</body>
+</html>

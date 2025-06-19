@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contactos</title>
+  
+</head>
+<body>
+  <h1>Contactos Registrados</h1>
+  <div id="tabla-contactos">
+ 
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("/api/contactos")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("tabla-contactos").innerHTML = html;
+        })
+        .catch(err => console.error("Error al cargar tabla:", err));
+    });
+  </script>
+
+</body>
+</html>
