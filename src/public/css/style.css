@@ -196,26 +196,30 @@ body {
 
 .form-container button {
   width: 100%;
-  background-color: #3498db;
+  background-color: #3934db;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
 }
 
 .form-container button:hover {
-  background-color: #2980b9;
+  background-color: #443ef2;
 }
 
-.google-btn {
-  background-color: #db4437;
+.form-container .google-btn {
+  background-color: #ffffff;
+  border: #1a1a1a 2px solid;
+  color: #1a1a1a;
+  border-radius: 25px;
   margin-top: 10px;
 }
 
-.google-btn:hover {
-  background-color: #b03524;
+.form-container .google-btn:hover {
+  background-color: #3934db;
+  color: white;
 }
 
 .register-link, .login-link {
