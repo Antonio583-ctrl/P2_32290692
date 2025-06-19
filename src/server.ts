@@ -1,6 +1,6 @@
 import express from 'express';
 import session from 'express-session';
-import SQLiteStore from 'connect-sqlite3';
+const SQLiteStore = require('connect-sqlite3')(session);
 import ejsMate from 'ejs-mate';
 import passport from 'passport';
 import authRoutes from './auth/auth.routes';
@@ -34,7 +34,7 @@ app.set('views', path.join(__dirname, 'Vista'));
 
 // task-4 punto 4
 app.use(session({
-  store: new (SQLiteStore(session))({
+  store: new SQLiteStore({
     db: 'sessions.sqlite',
     dir: path.join(__dirname, 'db'),
   }),
