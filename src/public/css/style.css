@@ -411,3 +411,20 @@ body {
     padding: 24px 2vw;
   }
 }
+
+.form-container textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: vertical;
+  margin-bottom: 20px;
+}
+
+.recaptcha-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
