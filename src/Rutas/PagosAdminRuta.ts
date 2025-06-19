@@ -7,7 +7,7 @@ const modelo = new PagoModelo();
 
 router.get('/payments', isAuthenticated, isAdmin, async (req, res) => {
   const pagos = await modelo.getAllPayments();
-  res.render('payments', { pagos });
+  res.render('payments', { pagos, title: 'Pagos - Administración' });
 });
 
 export default router;
