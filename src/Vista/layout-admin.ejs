@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= typeof title !== 'undefined' ? title : 'Panel de Administración' %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <i class="fa fa-user-shield" style="font-size:40px; margin-bottom:18px; color:#d4af37;"></i>
+      <span>Admin Panel</span>
+    </div>
+    <nav>
+      <a href="/"><i class="fa fa-home"></i> Inicio</a>
+      <a href="/contacts"><i class="fa fa-address-book"></i> Contactos</a>
+      <a href="/payments"><i class="fa fa-credit-card"></i> Pagos</a>
+      <a href="/api/auth/logout"><i class="fa fa-sign-out"></i> Cerrar sesión</a>
+    </nav>
+  </aside>
+  <main class="admin-content">
+    <%- body %>
+  </main>
+  <!-- Puedes agregar aquí scripts de iconos si quieres usar FontAwesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
