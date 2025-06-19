@@ -17,7 +17,11 @@ export const login = async (req: Request, res: Response) => {
     const { username, password } = req.body;
     const user = await authService.login(username, password);
     req.session.user = user;
-    res.redirect('/');
+    if (user.role === 'admin') {
+      res.redirect('/contacts');
+    } else {
+      res.redirect('/');
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'credenciales incorrectas';
     res.status(401).render('login', {
