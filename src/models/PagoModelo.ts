@@ -16,7 +16,7 @@ export class PagoModelo {
     const db = await getDBConnection();
     const creado_en = new Date().toISOString();
     await db.run(
-      `INSERT INTO pagos (correo, titular_tarjeta, numero_tarjeta, mes_expiracion, año_expiracion, cvv, monto, moneda, servicio, estado, creado_en) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO pagos (correo, titular_tarjeta, numero_tarjeta, mes_expiracion, año_expiracion, cvv, monto, moneda, servicio, estado, creado_en) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [correo, titular_tarjeta, numero_tarjeta, mes_expiracion, año_expiracion, cvv, monto, moneda, servicio, estado, creado_en]
     );
     await db.close();
