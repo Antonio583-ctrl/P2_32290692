@@ -67,6 +67,9 @@ export class PagoControlador {
         const apiText = await apiResponse.text();
         console.log("apiResponse.text():", apiText);
         // const resultado = await apiResponse.json();
+
+        const resultado = await apiResponse.json();
+        console.log("Resultado", resultado);
         
 
         // Manejo de redirección (éxito)
@@ -97,8 +100,7 @@ export class PagoControlador {
         }
         
         // Manejo de respuesta JSON estándar
-        const resultado = await apiResponse.json();
-        console.log("Resultado", resultado);
+        
 
         if (!resultado.success) {
           console.error("❌ Pago rechazado:", resultado);
