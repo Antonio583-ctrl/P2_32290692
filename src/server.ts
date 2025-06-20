@@ -17,6 +17,9 @@ import EnvRuta from './Rutas/EnvRuta';
 import PagosAdminRuta from './Rutas/PagosAdminRuta';
 import ContactosAdminRuta from './Rutas/ContactosAdminRuta';
 
+import cors from 'cors';
+
+
 
 dotenv.config();
 
@@ -48,6 +51,11 @@ app.use(session({
     secure: process.env.NODE_ENV === 'production', 
     maxAge: 15 * 60 * 1000
   }
+}));
+
+app.use(cors({
+  origin: ['https://p2-32290692.onrender.com/', 'http://localhost:3000'],
+  credentials: true,
 }));
 
 // Middlewares básicos
