@@ -1,4 +1,3 @@
-<!-- Vista/registro.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,12 +55,14 @@
       background-color: #45a049;
     }
   </style>
-
-     <script src="/service/googleEventos/gtag-config.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="/servicio/pago.js" defer></script>
+  <script src="/service/googleEventos/gtag-config.js" defer></script>
 </head>
 <body>
   <h1>Formulario de Pago</h1>
-  <form method="POST" action="/pago">
+  <form id="form-pago" method="POST" action="/pago" autocomplete="off">
     <label for="correo">Correo electrónico</label>
     <input type="email" id="correo" name="correo" required>
 
