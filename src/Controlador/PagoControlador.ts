@@ -64,10 +64,7 @@ export class PagoControlador {
         });
 
         console.log("apiResponse.status:", apiResponse.status);
-
-        const resultado = await apiResponse.json();
-        console.log("Resultado", resultado);
-        
+        console.log("Authorization", `Bearer ${process.env.FAKEPAYMENT_API_KEy}`
 
         // Manejo de redirección (éxito)
         if (apiResponse.status === 302) {
@@ -97,6 +94,7 @@ export class PagoControlador {
         }
         
         // Manejo de respuesta JSON estándar
+        const resultado = await apiResponse.json();       
         
 
         if (!resultado.success) {
