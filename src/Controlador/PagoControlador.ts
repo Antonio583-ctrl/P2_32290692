@@ -64,6 +64,8 @@ export class PagoControlador {
         });
 
         console.log("apiResponse.status:", apiResponse.status);
+        const apiText = await apiResponse.text();
+        console.log("apiResponse.text():", apiText);
         // const resultado = await apiResponse.json();
         
 
