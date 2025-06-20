@@ -64,8 +64,8 @@ export class PagoControlador {
         });
 
         console.log("apiResponse.status:", apiResponse.status);
-        const resultado = await apiResponse.json();
-        console.log("Resultado", apiResponse.status);
+        // const resultado = await apiResponse.json();
+        
 
         // Manejo de redirección (éxito)
         if (apiResponse.status === 302) {
@@ -96,6 +96,7 @@ export class PagoControlador {
         
         // Manejo de respuesta JSON estándar
         const resultado = await apiResponse.json();
+        console.log("Resultado", resultado);
 
         if (!resultado.success) {
           console.error("❌ Pago rechazado:", resultado);
