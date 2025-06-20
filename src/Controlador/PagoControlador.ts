@@ -64,7 +64,7 @@ export class PagoControlador {
         });
 
         console.log("apiResponse.status:", apiResponse.status);
-        console.log("Authorization", `Bearer ${process.env.FAKEPAYMENT_API_KEy}`;
+        console.log("Authorization", `Bearer ${process.env.FAKEPAYMENT_API_KEy}`);
 
         // Manejo de redirección (éxito)
         if (apiResponse.status === 302) {
