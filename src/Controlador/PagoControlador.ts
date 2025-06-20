@@ -63,6 +63,10 @@ export class PagoControlador {
           redirect: "manual"
         });
 
+        console.log("apiResponse.status:", apiResponse.status);
+        const resultado = await apiResponse.json();
+        console.log("Resultado", apiResponse.status);
+
         // Manejo de redirección (éxito)
         if (apiResponse.status === 302) {
           console.log("✅ Pago exitoso (redirección 302)");
