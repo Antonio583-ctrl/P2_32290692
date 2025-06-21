@@ -21,7 +21,7 @@
       <tr>
         <td><%= p.servicio || '' %></td>
         <td><%= p.monto %></td>
-        <td><%= p.creado_en %></td>
+        <td><%= formatFecha(p.creado_en) %></td>
         <td><%= p.estado || 'completado' %></td>
       </tr>
     <% }) %>
