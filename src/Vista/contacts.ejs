@@ -22,7 +22,7 @@
         <td><%= c.comentario %></td>
         <td><%= c.ip %></td>
         <td><%= c.pais %></td>
-        <td><%= c.creado_en %></td>
+        <td><%= formatFecha(c.creado_en) %></td>
       </tr>
     <% }) %>
   </tbody>
