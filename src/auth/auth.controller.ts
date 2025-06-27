@@ -24,17 +24,30 @@ export const login = async (req: Request, res: Response) => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'credenciales incorrectas';
+
+    res.render('login', { 
+        error: error, 
+        username: '',
+        title: req.t('meta.pages.login.title'),
+        description: req.t('meta.description'),
+        ogTitle: req.t('meta.og.title'),
+        ogDescription: req.t('meta.og.description'),
+        ogUrl: req.t('meta.og.url'),
+        ogImage: req.t('meta.og.image'),
+        showFooter: false,
+        req.session?.user?.role === 'admin'
+    });
     
     // Respuesta renderizada para HTML
-    return res.status(401)
-      .set('Content-Type', 'text/html')
-      .render('login', {
-        error: message,
-        username: req.body.username || '',
-        isAdmin: req.session?.user?.role === 'admin',
-        showFooter: false,
-        toastifyScript: true
-      });
+    // return res.status(401)
+    //   .set('Content-Type', 'text/html')
+    //   .render('login', {
+    //     error: message,
+    //     username: req.body.username || '',
+    //     isAdmin: req.session?.user?.role === 'admin',
+    //     showFooter: false,
+    //     toastifyScript: true
+    //   });
   }
 };
 
