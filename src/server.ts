@@ -53,8 +53,14 @@ i18next
       order: ['querystring', 'cookie', 'header'],
       caches: ['cookie'],
       lookupCookie: 'i18next',
-      lookupQuerystring: 'lng'
-    }
+      lookupQuerystring: 'lng',
+      lookupHeader: 'accept-language'
+    },
+    interpolation: {
+      escapeValue: false // Para permitir HTML en las traducciones
+    },
+    saveMissing: true, // En desarrollo para capturar keys faltantes
+    initImmediate: false
   });
 
 
