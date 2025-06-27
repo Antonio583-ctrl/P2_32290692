@@ -5,7 +5,11 @@ import passport from 'passport';
 
 const router = Router();
 
-router.post('/login', login);
+// router.post('/login', login);
+router.route('/login')
+  .post(login) // POST para el login normal
+  .get((req, res) => res.redirect('/login')); // GET redirige al formulario
+
 // router.post('/api/auth/login', login);
 router.get('/logout', logout);
 router.post('/register', isAuthenticated, isAdmin, register);
