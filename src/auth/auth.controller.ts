@@ -27,46 +27,22 @@ export const login = async (req: Request, res: Response) => {
 
     if (req.xhr || req.headers.accept?.includes('application/json')) {
       return res.status(401).json({ 
+        success: false,
         error: message,
-        toast: req.t('login.errors.invalid_credentials') // Mensaje traducido
+        toast: req.t('login.errors.invalid_credentials') 
       });
     }
     
-    // Opción B: Petición normal (renderiza EJS)
-    return res.status(401).render('login', {
-      error: message, // Clave del error (ej: "invalid_credentials")
-      username: req.body.username || '',
-      isAdmin: req.session?.user?.role === 'admin',
-      showFooter: false,
-      toastifyScript: true // Asegúrate de inyectar el JS de Toastify
-    });
-
-    // res.status(401).send(`
-    //   <!DOCTYPE html>
-    //   <html>
-    //     <head><title>Error</title></head>
-    //     <body>
-    //       <div class="error">${message}</div>
-    //       <!-- Redirigir o incluir tu formulario de login aquí -->
-    //     </body>
-    //   </html>
-    // `);
-    
-    // res.status(401)
-    //  .set('Content-Type', 'text/html') // ¡Forzar HTML!
-    //  .render('login', {
-    //    error: message,
-    //    username: req.body.username || '',
-    //    isAdmin: req.session?.user?.role === 'admin',
-    //    showFooter: false,
-    //  });
-    
-    // res.status(401).render('login', {
-    //   error: 'invalid_credentials',
-    //   username: req.body.username || '',
-    //   isAdmin,
-    //   showFooter: false,
-    // });
+    // Respuesta renderizada para HTML
+    return res.status(401)
+      .set('Content-Type', 'text/html')
+      .render('login', {
+        error: message,
+        username: req.body.username || '',
+        isAdmin: req.session?.user?.role === 'admin',
+        showFooter: false,
+        toastifyScript: true
+      });
   }
 };
 
