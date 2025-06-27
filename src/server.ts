@@ -44,8 +44,7 @@ i18next
   .use(i18nextMiddleware.LanguageDetector)
   .init({
     backend: {
-      loadPath: path.join(__dirname, '../locales/{{lng}}/translation.json'),
-      addPath: path.join(__dirname, '../locales/{{lng}}/missing.json')
+      loadPath: path.join(__dirname, 'locales/{{lng}}/translation.json')
     },
     initImmediate: false, // Carga sincrónica
     preload: ['es', 'en'],
