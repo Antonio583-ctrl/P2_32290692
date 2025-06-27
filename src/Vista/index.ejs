@@ -1,0 +1,84 @@
+<% layout('layout') %>
+
+<section class="hero">
+  <div>
+    <h1><%= t('hero.title') %></h1>
+    <p><%= t('hero.subtitle') %></p>
+    <a href="#coleccion">
+      <button class="cta-button"><%= t('hero.ctaButton') %></button>
+    </a>
+  </div>
+</section>
+
+<section class="servicios">
+  <div class="servicios-container">
+    <div class="servicio-card">
+      <h2><%= t('services.styling.title') %></h2>
+      <p><%= t('services.styling.description') %></p>
+    </div>
+    <div class="servicio-card">
+      <h2><%= t('services.delivery.title') %></h2>
+      <p><%= t('services.delivery.description') %></p>
+    </div>
+    <div class="servicio-card">
+      <h2><%= t('services.membership.title') %></h2>
+      <p><%= t('services.membership.description') %></p>
+    </div>
+  </div>
+</section>
+
+<section class="collection" id="coleccion">
+  <h2><%= t('collection.title') %></h2>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="coleccion/Maroon.jpeg" alt="<%= t('collection.altText.menSuit') %>">
+    </div>
+    <div class="gallery-item">
+      <img src="coleccion/descarga.jpeg" alt="<%= t('collection.altText.menSuit') %>">
+    </div>
+    <div class="gallery-item">
+      <img src="coleccion/men oufit 1.jpeg" alt="<%= t('collection.altText.menSuit') %>">
+    </div>
+    <div class="gallery-item">
+      <img src="coleccion/oufit women.jpeg" alt="<%= t('collection.altText.womenDress') %>">
+    </div>
+  </div>
+</section>
+
+<section class="social-buttom">
+  <div class="redes">
+    <h2><%= t('social.title') %></h2>
+    <p><%= t('social.subtitle') %></p>
+    <a href="https://www.instagram.com/radc810?igsh=bnFkbjhybmtydTZt">
+      <u>
+        <img src="coleccion/logoinstagram.avif" alt="Instagram">
+      </u>
+    </a>
+    <a href="https://www.facebook.com/share/15upKZids7/">
+      <u>
+        <img src="coleccion/logofacebook.png" alt="Facebook">
+      </u>
+    </a>
+    <a href="https://api.whatsapp.com/send/?phone=%2B584124493759&text&type=phone_number&app_absent=0">
+      <u>
+        <img src="coleccion/logowhatsapp.png" alt="<%= t('social.altText.whatsapp') %>">
+      </u>
+    </a>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("/api/auth/status")
+    .then(res => res.json())
+    .then(data => {
+      if (data.authenticated) {
+        document.getElementById("login-link").style.display = "none";
+        document.getElementById("logout-link").style.display = "inline";
+      } else {
+        document.getElementById("login-link").style.display = "inline";
+        document.getElementById("logout-link").style.display = "none";
+      }
+    });
+});
+</script>

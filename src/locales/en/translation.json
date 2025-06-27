@@ -1,0 +1,213 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "catalog": "Catalog",
+      "register": "Register",
+      "payment": "Payment",
+      "adminArea": "Admin Area",
+      "login": "Log In",
+      "logout": "Log Out"
+    },
+    "languageSelector": {
+      "spanish": "Spanish",
+      "english": "English"
+    }
+  },  
+  "footer": {
+    "copyright": "© 2025 Vestiaire Royal - All rights reserved"
+  },
+
+  "hero": {
+    "title": "Temporary Elegance for Eternal Moments",
+    "subtitle": "Exclusive garment rental for special events",
+    "ctaButton": "Explore the Collection"
+  },
+  "services": {
+    "title": "Our Services",
+    "styling": {
+      "title": "Personalized Styling Advice",
+      "description": "We offer personalized recommendations of garments and accessories from our luxury collection, creating complete and sophisticated looks that enhance the client's figure and personality."
+    },
+    "delivery": {
+      "title": "Home Delivery and Pickup",
+      "description": "To provide a complete and hassle-free luxury experience, we handle the delivery of rented garments directly to the client's home or desired location."
+    },
+    "membership": {
+      "title": "Exclusive Memberships or Packages",
+      "description": "We offer a Membership system for frequent clients, giving them discounts on future rentals, early access to new collections, and the ability to reserve garments in advance."
+    }
+  },
+  "collection": {
+    "title": "Our Featured Collection",
+    "altText": {
+      "menSuit": "Men's suit",
+      "womenDress": "Women's dress"
+    }
+  },
+  "social": {
+    "title": "Contact Us Immediately",
+    "subtitle": "Experience luxury. Rent unique pieces and dazzle at every event",
+    "altText": {
+      "whatsapp": "WhatsApp group"
+    }
+  },
+
+  "admin": {
+    "sidebar": {
+      "title": "Admin Dashboard",
+      "logo_text": "Admin Panel",
+      "menu": {
+        "home": "Home",
+        "contacts": "Contacts",
+        "payments": "Payments",
+        "logout": "Logout"
+      }
+    },
+    "contacts": {
+      "title": "Registered Contacts",
+      "searchPlaceholder": "Search by name or email...",
+      "table": {
+        "headers": {
+          "name": "Name",
+          "email": "Email",
+          "comment": "Comment",
+          "ip": "IP",
+          "country": "Country",
+          "date": "Date"
+        },
+        "noResults": "No contacts found"
+      }
+    },
+    "payments": {
+      "title": "Completed Payments",
+      "filters": {
+        "service": "Service",
+        "status": "Status",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "filterButton": "Filter"
+      },
+      "table": {
+        "headers": {
+          "service": "Service",
+          "amount": "Amount",
+          "date": "Date",
+          "status": "Status"
+        },
+        "defaultStatus": "completed",
+        "noResults": "No payments found"
+      }
+    }
+  },
+
+  "catalogo": {
+    "title": "Exclusive Catalog",
+    "filters": {
+      "all": "All",
+      "men": "Men",
+      "women": "Women"
+    },
+    "perDay": "day",
+    "rent": "Rent",
+    "products": {
+      "maroonSuit": "Elegant Maroon Suit",
+      "blueSuit": "Navy Blue Suit",
+      "redDress": "Passion Red Dress",
+      "casualOutfit": "Premium Casual Outfit",
+      "graySuit": "Formal Gray Suit",
+      "whiteOutfit": "Minimalist White Outfit",
+      "blackSuit": "Black Tailored Suit",
+      "goldenDress": "Festive Golden Dress"
+    }
+  },
+
+  "pago": {
+    "success": {
+      "paymentCompleted": "Payment completed successfully"
+    },
+    "error": {
+      "missingFields": "All fields are required",
+      "invalidAmount": "Invalid amount",
+      "paymentProcessing": "Error processing payment",
+      "paymentRejected": "Payment rejected",
+      "serverError": "Internal server error"
+    },
+    "processing": "Processing payment...",
+    "connectionError": "Connection error",
+    "title": "Payment Confirmation",
+    "formTitle": "Payment Form",
+    "labels": {
+      "email": "Email",
+      "cardHolder": "Card Holder",
+      "cardNumber": "Card Number",
+      "expMonth": "Expiration Month",
+      "expYear": "Expiration Year",
+      "cvv": "CVV",
+      "amount": "Amount",
+      "currency": "Currency"
+    },
+    "placeholders": {
+      "month": "Ex: 08",
+      "year": "Ex: 2027"
+    },
+    "currencies": {
+      "BSF": "Bolivars",
+      "USD": "Dollars",
+      "EUR": "Euros"
+    },
+    "submit": "Submit Payment",
+    "serviciosTitle": "Selected Services",
+    "resumenTitle": "Order Summary",
+    "subtotal": "Subtotal",
+    "taxes": "Taxes (16%)",
+    "total": "Total",
+    "noServices": "No services selected",
+    "remove": "Remove",
+    "viewCatalog": "View Catalog",
+    "formDisabledMessage": "Please select at least one service from the catalog to enable payment",
+    "exito": "Payment processed successfully",
+    "conexion": "Connection error"
+  },
+
+  "contact": {
+    "title": "Contact Us",
+    "form": {
+      "successTitle": "Thank you for contacting us!",
+      "successMessage": "We've received your message. We'll respond soon.",
+      "anotherMessage": "Send another message",
+      "email": "Email address",
+      "name": "Full name",
+      "comment": "Message",
+      "submit": "Send",
+      "validation": {
+        "captcha": "Please complete the reCAPTCHA.",
+        "requiredAll": "All fields are required",
+        "required": "This field is required",
+        "invalidEmail": "Please enter a valid email"
+      },
+      "success": "Thank you for contacting us! We'll get back to you soon.",
+      "error": "An error occurred while sending your message. Please try again.",
+      "sending": "Sending..."
+    }
+  },
+
+  "login": {
+    "login_title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "login_button": "Sign in",
+    "login_with_google": "Sign in with Google",
+    "validation": {
+      "required_field": "Please fill out this field",
+      "username_required": "Username is required",
+      "password_required": "Password is required"
+    }
+  },
+
+  "access_denied": {
+    "title": "Access Denied",
+    "message": "You don't have permission to access this page.",
+    "back_link": "Back to home"
+  }
+}

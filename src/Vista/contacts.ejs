@@ -1,0 +1,45 @@
+<% layout('layout-admin') %>
+<h1><%= t('admin.contacts.title') %></h1>
+<div class="admin-filtros">
+  <input type="text" id="busqueda" placeholder="<%= t('admin.contacts.searchPlaceholder') %>">
+</div>
+<table class="admin-table" id="tabla-contactos">
+  <thead>
+    <tr>
+      <th><%= t('admin.contacts.table.headers.name') %></th>
+      <th><%= t('admin.contacts.table.headers.email') %></th>
+      <th><%= t('admin.contacts.table.headers.comment') %></th>
+      <th><%= t('admin.contacts.table.headers.ip') %></th>
+      <th><%= t('admin.contacts.table.headers.country') %></th>
+      <th><%= t('admin.contacts.table.headers.date') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (contactos.length === 0) { %>
+      <tr>
+        <td colspan="6"><%= t('admin.contacts.table.noResults') %></td>
+      </tr>
+    <% } %>
+    <% contactos.forEach(c => { %>
+      <tr>
+        <td><%= c.nombre %></td>
+        <td><%= c.correo %></td>
+        <td><%= c.comentario %></td>
+        <td><%= c.ip %></td>
+        <td><%= c.pais %></td>
+        <td><%= formatFecha(c.creado_en) %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<script>
+  const input = document.getElementById('busqueda');
+  input.addEventListener('input', function() {
+    const filtro = this.value.toLowerCase();
+    document.querySelectorAll('#tabla-contactos tbody tr').forEach(row => {
+      const nombre = row.children[0].textContent.toLowerCase();
+      const correo = row.children[1].textContent.toLowerCase();
+      row.style.display = (nombre.includes(filtro) || correo.includes(filtro)) ? '' : 'none';
+    });
+  });
+</script>

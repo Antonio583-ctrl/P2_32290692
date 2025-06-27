@@ -1,0 +1,34 @@
+<% layout('layout') %>
+
+<div class="form-container">
+  <h2> <%= t('login.login_title') %></h2>  
+  <form action="/api/auth/login" method="POST">
+    <label for="username"><%= t('login.username') %>:</label>
+    <input type="text" id="username" name="username" value="<%= username %>" required title="<%= t('login.validation.required_field') %>" data-error-message="<%= t('login.validation.username_required') %>" oninvalid="this.setCustomValidity(this.dataset.errorMessage)" oninput="setCustomValidity('')">
+    <label for="password"><%= t('login.password') %>:</label>
+    <input type="password" id="password" name="password" required title="<%= t('login.validation.required_field') %>" data-error-message="<%= t('login.validation.password_required') %>" oninvalid="this.setCustomValidity(this.dataset.errorMessage)" oninput="setCustomValidity('')">
+    <div class="error-message<%= error ? ' active' : '' %>"><%= error || '' %></div>
+    <button type="submit"><%= t('login.login_button') %></button>
+  </form>
+  <form action="/api/auth/google" method="GET">
+    <button type="submit" class="google-btn">
+      <img src="/img/google-icon.png" alt="Google" style="width:35px; vertical-align:middle; margin-right:8px;">
+      <%= t('login.login_with_google') %>
+    </button>
+  </form>
+</div>
+<link rel="stylesheet" href="/css/style.css">
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const errorMsg = document.querySelector('.error-message');
+    if (!errorMsg) return;
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        errorMsg.classList.remove('active');
+      });
+    });
+  });
+</script>  

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= typeof title !== 'undefined' ? title :  t('admin.sidebar.title') %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <i class="fa fa-user-shield" style="font-size:40px; margin-bottom:18px; color:#d4af37;"></i>
+      <span><%= t('admin.sidebar.logo_text') %></span>
+    </div>
+    <nav>
+      <a href="/"><i class="fa fa-home"></i> <%= t('admin.sidebar.menu.home') %></a>
+      <a href="/contacts"><i class="fa fa-address-book"></i> <%= t('admin.sidebar.menu.contacts') %></a>
+      <a href="/payments"><i class="fa fa-credit-card"></i> <%= t('admin.sidebar.menu.payments') %></a>
+      <a href="/api/auth/logout"><i class="fa fa-sign-out"></i> <%= t('admin.sidebar.menu.logout') %></a>
+    </nav>
+  </aside>
+  <main class="admin-content">
+    <%- body %>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

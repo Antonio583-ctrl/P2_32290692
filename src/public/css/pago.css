@@ -1,0 +1,218 @@
+
+
+.pago-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.pago-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.pago-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.servicios-seleccionados {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.servicios-list {
+  margin: 1rem 0;
+}
+
+.servicio-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.servicio-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.resumen-compra {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.resumen-details p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.resumen-details .total {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.formulario-pago {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.btn-pagar {
+  width: 100%;
+  padding: 1rem;
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-pagar:hover {
+  background: #333;
+}
+
+@media (max-width: 768px) {
+  .pago-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilos para botones de eliminar y ver catálogo */
+.btn-eliminar {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.btn-eliminar:hover {
+  background-color: #d32f2f;
+}
+
+.no-servicios-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.btn-catalogo {
+  display: inline-block;
+  background-color: #2196F3;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-catalogo:hover {
+  background-color: #0b7dda;
+}
+
+.btn-catalogo i {
+  margin-right: 5px;
+}
+
+.servicio-item {
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.servicio-info {
+  flex-grow: 1;
+}
+
+/* Estilos para formulario deshabilitado */
+.disabled-form {
+    opacity: 0.6;
+    position: relative;
+}
+
+.disabled-form::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+.form-disabled-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 2;
+    text-align: center;
+    width: 80%;
+}
+
+.form-disabled-message p {
+    margin: 0;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Estilos para inputs deshabilitados */
+input:disabled, select:disabled, button:disabled {
+    cursor: not-allowed;
+    background-color: #f5f5f5;
+}

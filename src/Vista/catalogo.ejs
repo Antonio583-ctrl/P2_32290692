@@ -1,0 +1,160 @@
+<% layout('layout') %>
+
+<section class="catalogo-container">
+  <h1 class="catalogo-title"><%= t('catalogo.title') %></h1>
+  <link rel="stylesheet" href="/css/catalogo.css">
+  
+  <div class="filtros">
+    <button class="filtro-btn active" data-categoria="todos"><%= t('catalogo.filters.all') %></button>
+    <button class="filtro-btn" data-categoria="hombres"><%= t('catalogo.filters.men') %></button>
+    <button class="filtro-btn" data-categoria="mujeres"><%= t('catalogo.filters.women') %></button>
+  </div>
+
+  <div class="galeria">
+    <!-- Hombre -->
+    <div class="producto" data-categoria="hombres">
+      <img src="/coleccion/Maroon.jpeg" alt="<%= t('catalogo.products.maroonSuit') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.maroonSuit"><%= t('catalogo.products.maroonSuit') %></h3>
+        <p class="precio">$120/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <div class="producto" data-categoria="hombres">
+      <img src="/coleccion/descarga.jpeg" alt="<%= t('catalogo.products.blueSuit') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.blueSuit"><%= t('catalogo.products.blueSuit') %></h3>
+        <p class="precio">$150/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <div class="producto" data-categoria="hombres">
+      <img src="/coleccion/men%20oufit%201.jpeg" alt="<%= t('catalogo.products.casualOutfit') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.casualOutfit"><%= t('catalogo.products.casualOutfit') %></h3>
+        <p class="precio">$100/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <div class="producto" data-categoria="hombres">
+      <img src="/coleccion/men%20oufit%204.jpeg" alt="<%= t('catalogo.products.graySuit') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.graySuit"><%= t('catalogo.products.graySuit') %></h3>
+        <p class="precio">$170/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <!-- Mujer -->
+    <div class="producto" data-categoria="mujeres">
+      <img src="/coleccion/oufit%20women.jpeg" alt="<%= t('catalogo.products.redDress') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.redDress"><%= t('catalogo.products.redDress') %></h3>
+        <p class="precio">$180/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <div class="producto" data-categoria="mujeres">
+      <img src="/coleccion/women%20oufit%202.jpeg" alt="<%= t('catalogo.products.whiteOutfit') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.whiteOutfit"><%= t('catalogo.products.whiteOutfit') %></h3>
+        <p class="precio">$160/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <div class="producto" data-categoria="mujeres">
+      <img src="/coleccion/women%20oufit.jpeg" alt="<%= t('catalogo.products.blackSuit') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.blackSuit"><%= t('catalogo.products.blackSuit') %></h3>
+        <p class="precio">$190/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+
+    <div class="producto" data-categoria="mujeres">
+      <img src="/coleccion/women%20oufit%204.jpeg" alt="<%= t('catalogo.products.goldenDress') %>" class="producto-imagen">
+      <div class="producto-info">
+        <h3 data-translation-key="catalogo.products.goldenDress"><%= t('catalogo.products.goldenDress') %></h3>
+        <p class="precio">$200/<%= t('catalogo.perDay') %></p>
+        <button class="btn-alquilar"><%= t('catalogo.rent') %></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  document.querySelectorAll('.btn-alquilar').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const producto = this.closest('.producto');
+      const servicio = {
+        nombre: producto.querySelector('h3').getAttribute('data-translation-key'),
+        precio: producto.querySelector('.precio').textContent,
+        imagen: producto.querySelector('img').src,
+        precioNum: parseFloat(producto.querySelector('.precio').textContent.match(/\d+/)[0])
+      };
+
+      let servicios = [];
+      
+      // // Obtener servicios existentes o inicializar array vacío
+      // const serviciosGuardados = localStorage.getItem('serviciosSeleccionados');
+      
+      // if (serviciosGuardados) {
+      //   try {
+      //     servicios = JSON.parse(serviciosGuardados);
+      //     if (!Array.isArray(servicios)) {
+      //       servicios = []; // Si no es un array, lo reiniciamos
+      //     }
+      //   } catch (e) {
+      //     console.error('Error parsing servicios:', e);
+      //     servicios = [];
+      //   }
+      // }
+
+      // Agregar nuevo servicio
+      servicios.push(servicio);
+      
+      // Guardar en localStorage
+      localStorage.setItem('serviciosSeleccionados', JSON.stringify(servicios));
+
+      // Redirigir a página de pago con los datos como parámetro
+      window.location.href = `/pago?servicios=${encodeURIComponent(JSON.stringify(servicios))}`;
+    });
+  });
+
+  const filtros = document.querySelectorAll('.filtro-btn');
+  const productos = document.querySelectorAll('.producto');
+
+  // Función para filtrar productos
+  function filtrarProductos(categoria) {
+    productos.forEach(producto => {
+      if (categoria === 'todos' || producto.dataset.categoria === categoria) {
+        producto.style.display = 'block';
+      } else {
+        producto.style.display = 'none';
+      }
+    });
+  }
+
+  // Event listeners para los botones de filtro
+  filtros.forEach(filtro => {
+    filtro.addEventListener('click', function() {
+      // Remover clase active de todos los botones
+      filtros.forEach(f => f.classList.remove('active'));
+      // Añadir clase active al botón clickeado
+      this.classList.add('active');
+      // Filtrar productos
+      filtrarProductos(this.dataset.categoria);
+    });
+  });
+
+  // Mostrar todos los productos al cargar la página
+  filtrarProductos('todos');
+});
+</script>

@@ -1,0 +1,235 @@
+<% layout('layout') %>
+
+<section class="pago-container">
+  <h1 class="pago-title"><%= t('pago.title') %></h1>
+  <link rel="stylesheet" href="/css/pago.css">
+  <script src="/servicio/pago.js" defer></script>
+  <!-- <script src="/service/googleEventos/gtag-config.js" defer></script> -->
+  
+  <div class="pago-grid">
+    <!-- Sección de Servicios Seleccionados -->
+    <div class="servicios-seleccionados">
+      <h2><%= t('pago.serviciosTitle') %></h2>
+      <div class="servicios-list" id="servicios-list">
+        <% if (typeof servicios !== 'undefined' && servicios.length) { %>
+          <% servicios.forEach((servicio, index) => { %>
+            <div class="servicio-item" data-index="<%= index %>">
+              <img src="<%= servicio.imagen %>" alt="<%= t(servicio.nombre) %>">
+              <div class="servicio-info">
+                <h3><%= t(servicio.nombre) %></h3> 
+                <p>$<%= servicio.precioNum.toFixed(2) %>/<%= t('catalogo.perDay') %></p>
+              </div>
+              <button class="btn-eliminar" data-index="<%= index %>">
+                <i class="fas fa-trash-alt"></i> <%= t('pago.remove') %>
+              </button>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <div class="no-servicios-container">
+            <p class="no-servicios"><%= t('pago.noServices') %></p>
+            <a href="/catalogo" class="btn-catalogo">
+              <i class="fas fa-tshirt"></i> <%= t('pago.viewCatalog') %>
+            </a>
+          </div>
+        <% } %>
+      </div>
+      
+      <% if (typeof servicios !== 'undefined' && servicios.length) { %>
+        <div class="resumen-compra">
+          <h2><%= t('pago.resumenTitle') %></h2>
+          <div class="resumen-details">
+            <p><span><%= t('pago.subtotal') %>:</span> <span id="subtotal">$0.00</span></p>
+            <p><span><%= t('pago.taxes') %>:</span> <span id="taxes">$0.00</span></p>
+            <p class="total"><span><%= t('pago.total') %>:</span> <span id="total">$0.00</span></p>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <!-- Formulario de Pago -->
+    <div class="formulario-pago <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled-form' : '' %>">
+      <h2><%= t('pago.formTitle') %></h2>
+      <form id="form-pago" method="POST" action="/pago" autocomplete="off" 
+            <%= (typeof servicios === 'undefined' || !servicios.length) ? 'onsubmit="event.preventDefault(); return false;"' : '' %>>
+        <div class="form-group">
+          <label for="correo"><%= t('pago.labels.email') %></label>
+          <input type="email" id="correo" name="correo" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+        </div>
+
+        <div class="form-group">
+          <label for="titular_tarjeta"><%= t('pago.labels.cardHolder') %></label>
+          <input type="text" id="titular_tarjeta" name="titular_tarjeta" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+        </div>
+
+        <div class="form-group">
+          <label for="numero_tarjeta"><%= t('pago.labels.cardNumber') %></label>
+          <input type="text" id="numero_tarjeta" name="numero_tarjeta" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="mes_expiracion"><%= t('pago.labels.expMonth') %></label>
+            <input type="text" id="mes_expiracion" name="mes_expiracion" 
+                   placeholder="<%= t('pago.placeholders.month') %>" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+          </div>
+          
+          <div class="form-group">
+            <label for="año_expiracion"><%= t('pago.labels.expYear') %></label>
+            <input type="text" id="año_expiracion" name="año_expiracion" 
+                   placeholder="<%= t('pago.placeholders.year') %>" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+          </div>
+          
+          <div class="form-group">
+            <label for="cvv"><%= t('pago.labels.cvv') %></label>
+            <input type="text" id="cvv" name="cvv" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="monto"><%= t('pago.labels.amount') %></label>
+          <input type="number" step="0.01" id="monto" name="monto" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required readonly>
+        </div>
+
+        <div class="form-group">
+          <label for="moneda"><%= t('pago.labels.currency') %></label>
+          <select id="moneda" name="moneda" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %> required>
+            <option value="USD"><%= t('pago.currencies.USD') %></option>
+            <option value="BSF"><%= t('pago.currencies.BSF') %></option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-pagar" <%= (typeof servicios === 'undefined' || !servicios.length) ? 'disabled' : '' %>>
+          <%= t('pago.submit') %>
+        </button>
+        <% if (typeof servicios !== 'undefined' && servicios.length) { %>
+          <input type="hidden" name="servicios" value="<%= JSON.stringify(servicios) %>">
+        <% } %>
+      </form>
+      <% if (typeof servicios === 'undefined' || !servicios.length) { %>
+        <div class="form-disabled-message">
+          <p><%= t('pago.formDisabledMessage') %></p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>
+
+<script>
+  window.translationsPg = "<%= t('pago') %>";
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const elementosRequeridos = [
+      '#servicios-list',
+      '#subtotal',
+      '#taxes',
+      '#total',
+      '#monto'
+    ];
+    // Función para actualizar los servicios en localStorage y recargar
+    function actualizarServicios(nuevosServicios) {
+      localStorage.setItem('serviciosSeleccionados', JSON.stringify(nuevosServicios));
+      
+      // Si no quedan servicios, recargamos la página para mostrar el mensaje
+      if (nuevosServicios.length === 0) {
+        window.location.href = '/pago';
+      } else {
+        // Actualizamos la URL con los servicios actualizados
+        window.location.href = `/pago?servicios=${encodeURIComponent(JSON.stringify(nuevosServicios))}`;
+      }
+    }
+
+    document.querySelectorAll('.btn-eliminar').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const index = parseInt(this.getAttribute('data-index'));
+        
+        // Obtener servicios actuales
+        const serviciosGuardados = localStorage.getItem('serviciosSeleccionados');
+        if (serviciosGuardados) {
+          try {
+            let servicios = JSON.parse(serviciosGuardados);
+            
+            // Eliminar el servicio seleccionado
+            servicios.splice(index, 1);
+            
+            // Actualizar localStorage y recargar
+            actualizarServicios(servicios);
+          } catch (e) {
+            console.error('Error al procesar servicios:', e);
+          }
+        }
+      });
+    });
+
+    if (!elementosRequeridos.every(selector => document.querySelector(selector))) {
+      return;
+    }
+
+    // Calcular total basado en servicios
+    function calcularTotal() {
+      let subtotal = 0;
+      document.querySelectorAll('.servicio-item').forEach(item => {
+        const precioText = item.querySelector('p').textContent;
+        const precio = parseFloat(precioText.match(/\d+/)[0]);
+        subtotal += precio;
+      });
+      
+      const taxes = subtotal * 0.16; // 16% de impuestos
+      const total = subtotal + taxes;
+      
+      document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('taxes').textContent = `$${taxes.toFixed(2)}`;
+      document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+      
+      if (document.getElementById('monto')) {
+        document.getElementById('monto').value = total.toFixed(2);
+      }
+    }
+
+    // Cargar servicios desde localStorage si no vienen del servidor
+    if (document.querySelector('.no-servicios') || document.querySelectorAll('.servicio-item').length === 0) {
+      const serviciosGuardados = localStorage.getItem('serviciosSeleccionados');
+      if (serviciosGuardados) {
+        try {
+          const servicios = JSON.parse(serviciosGuardados);
+          if (servicios.length > 0) {
+            // Redirigir con los servicios como parámetro
+            window.location.href = `/pago?servicios=${encodeURIComponent(serviciosGuardados)}`;
+          }
+        } catch (e) {
+          console.error('Error parsing servicios:', e);
+        }
+      }
+    }
+
+    calcularTotal();
+
+        // Manejar envío del formulario
+    document.getElementById('form-pago').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validación de tarjeta básica
+      const cardNumber = document.getElementById('numero_tarjeta').value.replace(/\s+/g, '');
+      if (!/^\d{13,16}$/.test(cardNumber)) {
+        showToast(document.documentElement.lng === 'es' ? "Número de tarjeta inválido" : "Invalid card number", "#f44336");
+        return;
+      }
+
+      // Validación de CVV
+      const cvv = document.getElementById('cvv').value;
+      if (!/^\d{3,4}$/.test(cvv)) {
+        showToast(documentElement.lng === 'es' ? "CVV inválido" : "Invalid CVV", "#f44336");
+        return;
+      }
+
+      // showToast(document.documentElement.lng === 'es' ? "Procesando pago..." : "Processing payment...",  "#4CAF50");
+
+      // Enviar formulario después de 3 segundos
+      setTimeout(() => {
+        this.submit();
+      }, 3000);
+    });
+  });
+</script>
+

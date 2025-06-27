@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <%- toastifyStyles %>
+  <title><%- title || 'Vestiaire Royal' %></title>
+  <meta name="description" content="<%- description || 'Alquiler de ropa de lujo para eventos especiales.' %>">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="<%- ogTitle || title || 'Vestiaire Royal' %>">
+  <meta property="og:description" content="<%- ogDescription || description || 'Alquiler de ropa de lujo para eventos especiales.' %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%- ogUrl || 'https://tusitio.com/' %>">
+  <meta property="og:image" content="<%- ogImage || '/coleccion/Maroon.jpeg' %>">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <% if (typeof extraHead !== 'undefined') { %>
+    <%- extraHead %>
+  <% } %>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">VESTIAIRE ROYAL</div>
+    <nav class="nav-links">
+      <a href="/"><%= t('header.nav.home') %></a>
+      <a href="/catalogo"><%= t('header.nav.catalog') %></a>
+      <a href="/registro"><%= t('header.nav.register') %></a>
+      <a href="/pago"><%= t('header.nav.payment') %></a>
+      <% if (isAdmin) { %>
+        <a href="/contacts"><%= t('header.nav.adminArea') %></a>
+      <% } %>
+      <a href="/login" id="login-link"><%= t('header.nav.login') %></a>
+      <a href="/api/auth/logout" id="logout-link" style="display:none;"><%= t('header.nav.logout') %></a>
+     
+      <div class="language-selector">
+        <button class="language-button" aria-label="Language selector">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </button>
+        <form method="get" action="" class="language-dropdown">
+          <select name="lng" onchange="this.form.submit()">
+            <option value="es" <%= lang === 'es' ? 'selected' : '' %>><%= t('header.languageSelector.spanish') %></option>
+            <option value="en" <%= lang === 'en' ? 'selected' : '' %>><%= t('header.languageSelector.english') %></option>
+          </select>
+        </form>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <%- body %>
+  </main>
+  <% if (typeof showFooter === 'undefined' || showFooter) { %>
+    <footer style="background: #1a1a1a; padding: 2rem; text-align: center; color: white">
+      <p><%= t('footer.copyright') %></p>
+    </footer>
+  <% } %>
+
+  <%- toastifyScript %>
+</body>
+</html>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RJHDXBMZ7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  
+  // Configuración segura - NO interpoles variables aquí
+  gtag('config', 'G-RJHDXBMZ7C', {
+    // Configuraciones adicionales SEGURAS
+    'anonymize_ip': true,
+    'cookie_domain': 'auto'
+  });
+</script>

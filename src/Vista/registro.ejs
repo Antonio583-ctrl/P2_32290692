@@ -1,0 +1,51 @@
+<% layout('layout') %>
+<div class="form-container">
+  <h2><%= t('contact.title') %></h2>
+  <form id="contactForm" method="POST" action="/registro">
+    <label for="correo"><%= t('contact.form.email') %></label>
+    <input type="email" id="correo" name="correo" requiredrequired
+           placeholder="<%= t('contact.form.email') %>"
+           title="<%= t('contact.form.validation.invalidEmail') %>">
+
+    <label for="nombre"><%= t('contact.form.name') %></label>
+    <input type="text" id="nombre" name="nombre" required
+           placeholder="<%= t('contact.form.name') %>"
+           title="<%= t('contact.form.validation.required') %>">
+
+    <label for="comentario"><%= t('contact.form.comment') %></label>
+    <textarea id="comentario" name="comentario" required
+              placeholder="<%= t('contact.form.comment') %>"
+              title="<%= t('contact.form.validation.required') %>"></textarea>
+
+    <div class="recaptcha-container">
+      <div class="g-recaptcha" id="captcha"></div>
+    </div>
+
+    <button type="submit"><%= t('contact.form.submit') %></button>
+  </form>
+</div>
+
+<script>
+  window.translations = {
+    contact: {
+      successTitle: "<%= t('contact.form.successTitle') %>",
+      successMessage: "<%= t('contact.form.successMessage') %>",
+      anotherMessage: "<%= t('contact.form.anotherMessage') %>",
+      validation: {
+        captcha: "<%= t('contact.form.validation.captcha') %>",
+        requiredAll: "<%= t('contact.form.validation.requiredAll') %>"
+      },
+      error: "<%= t('contact.form.error') %>",
+      success: "<%= t('contact.form.success') %>"
+    }
+  };
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?render=explicit" async defer></script>
+<script src="/servicio/recapt.js" defer></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RJHDXBMZ7C"></script>
+<script src="/servicio/googleEventos/gtag-config.js" defer></script>
+
+
+<script src="/servicio/formulario.js" defer></script>

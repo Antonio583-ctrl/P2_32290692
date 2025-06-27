@@ -1,0 +1,58 @@
+<% layout('layout-admin') %>
+<h1><%= t('admin.payments.title') %></h1>
+<div class="admin-filtros">
+  <input type="text" id="filtro-servicio" placeholder="<%= t('admin.payments.filters.service') %>">
+  <input type="text" id="filtro-estado" placeholder="<%= t('admin.payments.filters.status') %>">
+  <input type="date" id="filtro-fecha-inicio" placeholder="<%= t('admin.payments.filters.startDate') %>">
+  <input type="date" id="filtro-fecha-fin" placeholder="<%= t('admin.payments.filters.endDate') %>">
+  <button onclick="filtrar()" class="filter-button">
+    <%= t('admin.payments.filters.filterButton') %>
+  </button>
+</div>
+<table class="admin-table" id="tabla-pagos">
+  <thead>
+    <tr>
+      <th><%= t('admin.payments.table.headers.service') %></th>
+      <th><%= t('admin.payments.table.headers.amount') %></th>
+      <th><%= t('admin.payments.table.headers.date') %></th>
+      <th><%= t('admin.payments.table.headers.status') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if (pagos.length === 0) { %>
+      <tr>
+        <td colspan="4"><%= t('admin.payments.table.noResults') %></td>
+      </tr>
+    <% } %>
+    <% pagos.forEach(p => { %>
+      <tr>
+        <td><%= (p.servicio && p.servicio !== 'Sin especificar') ? t(p.servicio) : '' %></td>
+        <td><%= formatMoneda(p.monto) %></td>
+        <td><%= formatFecha(p.creado_en) %></td>
+        <td><%= p.estado || t('admin.payments.table.defaultStatus') %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<script>
+  function filtrar() {
+    const servicio = document.getElementById('filtro-servicio').value.toLowerCase();
+    const estado = document.getElementById('filtro-estado').value.toLowerCase();
+    const fechaInicio = document.getElementById('filtro-fecha-inicio').value;
+    const fechaFin = document.getElementById('filtro-fecha-fin').value;
+    
+    document.querySelectorAll('#tabla-pagos tbody tr').forEach(row => {
+      const tdServicio = row.children[0].textContent.toLowerCase();
+      const tdEstado = row.children[3].textContent.toLowerCase();
+      const tdFecha = row.children[2].textContent.split('T')[0];
+      let visible = true;
+
+      if (servicio && !tdServicio.includes(servicio)) visible = false;
+      if (estado && !tdEstado.includes(estado)) visible = false;
+      if (fechaInicio && tdFecha < fechaInicio) visible = false;
+      if (fechaFin && tdFecha > fechaFin) visible = false;
+
+      row.style.display = visible ? '' : 'none';
+    });
+  }
+</script>
