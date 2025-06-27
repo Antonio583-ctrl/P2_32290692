@@ -125,7 +125,7 @@ app.use((req, res, next) => {
   res.locals.toastifyScript = `
     <script src="/node_modules/toastify-js/src/toastify.js"></script>
     <script>
-      window.showToast = function(message, backgroundColor = '#4CAF50') {
+      window.showToast = function(message, backgroundColor = '#4CAF50', duration = 3000) {
         // Limpiar toasts anteriores
         const oldToasts = document.querySelectorAll('.toastify');
         oldToasts.forEach(toast => toast.remove());
@@ -134,7 +134,7 @@ app.use((req, res, next) => {
           escapeMarkup: false,
           text: message,
           close: true,
-          duration: 3000,
+          duration: duration,
           gravity: "top",
           position: "center",
           style: {
