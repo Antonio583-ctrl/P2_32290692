@@ -36,7 +36,7 @@ export const login = async (req: Request, res: Response) => {
         ogUrl: req.t('meta.og.url'),
         ogImage: req.t('meta.og.image'),
         showFooter: false,
-        isAdmin
+        isAdmin,
     });
     
     // Respuesta renderizada para HTML
