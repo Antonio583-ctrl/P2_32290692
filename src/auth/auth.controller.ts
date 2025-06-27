@@ -24,9 +24,12 @@ export const login = async (req: Request, res: Response) => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'credenciales incorrectas';
+    const isAdmin = req.session?.user?.role === 'admin';
     res.status(401).render('login', {
       error: message,
-      username: req.body.username || ''
+      username: req.body.username || '',
+      isAdmin,
+      showFooter: false,
     });
   }
 };
