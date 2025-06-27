@@ -1,13 +1,12 @@
 <% layout('layout') %>
 
-<div class="form-container">
+<div class="form-container" data-error="<%= typeof error !== 'undefined' ? error : '' %>">
   <h2> <%= t('login.login_title') %></h2>  
   <form action="/api/auth/login" method="POST">
     <label for="username"><%= t('login.username') %>:</label>
     <input type="text" id="username" name="username" value="<%= username %>" required title="<%= t('login.validation.required_field') %>" data-error-message="<%= t('login.validation.username_required') %>" oninvalid="this.setCustomValidity(this.dataset.errorMessage)" oninput="setCustomValidity('')">
     <label for="password"><%= t('login.password') %>:</label>
     <input type="password" id="password" name="password" required title="<%= t('login.validation.required_field') %>" data-error-message="<%= t('login.validation.password_required') %>" oninvalid="this.setCustomValidity(this.dataset.errorMessage)" oninput="setCustomValidity('')">
-    <div class="error-message<%= error ? ' active' : '' %>"><%= error || '' %></div>
     <button type="submit"><%= t('login.login_button') %></button>
   </form>
   <form action="/api/auth/google" method="GET">
@@ -19,16 +18,12 @@
 </div>
 <link rel="stylesheet" href="/css/style.css">
 
-
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const errorMsg = document.querySelector('.error-message');
-    if (!errorMsg) return;
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => {
-      input.addEventListener('input', () => {
-        errorMsg.classList.remove('active');
-      });
-    });
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.querySelector('.form-container');
+    const error = container.dataset.error;
+
+    if (error) showToast("<%= t('login.errors.invalid_credentials') %>", "#ff3333", 2500);
+    // if (error) showToast(documentElement.lng === 'es' ? "CVV inválido" : "Invalid CVV", "#ff3333");
   });
-</script>  
+</script>
