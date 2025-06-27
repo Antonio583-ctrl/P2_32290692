@@ -83,6 +83,13 @@ app.use(i18nextMiddleware.handle(i18next, {
   removeLngFromUrl: false // Mantiene el parámetro ?lng=en en URLs
 }));
 
+app.use((req, res, next) => {
+  console.log('Idioma detectado:', req.language);
+  console.log('Cookies:', req.cookies);
+  console.log('Traducciones disponibles:', i18next.services.backendConnector.backend);
+  next();
+});
+
 app.use('/node_modules/toastify-js', express.static(path.join(__dirname, '../node_modules/toastify-js')));
 
 // pasar t y lang a todas las vistas
