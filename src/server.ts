@@ -42,13 +42,15 @@ i18next
   .use(Backend)
   .use(i18nextMiddleware.LanguageDetector)
   .init({
-    fallbackLng: 'es',
+    backend: {
+      loadPath: path.join(__dirname, '../locales/{{lng}}/translation.json'),
+      addPath: path.join(__dirname, '../locales/{{lng}}/missing.json')
+    },
+    initImmediate: false, // Carga sincrónica
     preload: ['es', 'en'],
     supportedLngs: ['es', 'en'],
+    fallbackLng: 'es',
     nonExplicitSupportedLngs: true,
-    backend: {
-      loadPath: path.join(__dirname, 'locales/{{lng}}/translation.json')
-    },
     detection: {
       order: ['querystring', 'cookie', 'header'],
       caches: ['cookie'],
@@ -60,7 +62,6 @@ i18next
       escapeValue: false // Para permitir HTML en las traducciones
     },
     saveMissing: true, // En desarrollo para capturar keys faltantes
-    initImmediate: false
   });
 
 
@@ -83,10 +84,17 @@ app.use(i18nextMiddleware.handle(i18next, {
   removeLngFromUrl: false // Mantiene el parámetro ?lng=en en URLs
 }));
 
+// app.use((req, res, next) => {
+//   console.log('Idioma detectado:', req.language);
+//   console.log('Cookies:', req.cookies);
+//   console.log('Traducciones disponibles:', i18next.services.backendConnector.backend);
+//   next();
+// });
+
 app.use((req, res, next) => {
-  console.log('Idioma detectado:', req.language);
-  console.log('Cookies:', req.cookies);
-  console.log('Traducciones disponibles:', i18next.services.backendConnector.backend);
+  console.log('Ruta de traducciones:', path.join(__dirname, '../locales'));
+  console.log('Archivos en locales/es:', fs.readdirSync(path.join(__dirname, '../locales/es')));
+  console.log('Contenido de en/translation.json:', require(path.join(__dirname, '../locales/en/translation.json')));
   next();
 });
 
