@@ -92,12 +92,12 @@ app.use(i18nextMiddleware.handle(i18next));
 //   next();
 // });
 
-app.use((req, res, next) => {
-  console.log('Ruta de traducciones:', path.join(__dirname, '../locales'));
-  console.log('Archivos en locales/es:', fs.readdirSync(path.join(__dirname, '../locales/es')));
-  console.log('Contenido de en/translation.json:', require(path.join(__dirname, '../locales/en/translation.json')));
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log('Ruta de traducciones:', path.join(__dirname, '../locales'));
+//   console.log('Archivos en locales/es:', fs.readdirSync(path.join(__dirname, '../locales/es')));
+//   console.log('Contenido de en/translation.json:', require(path.join(__dirname, '../locales/en/translation.json')));
+//   next();
+// });
 
 app.use('/node_modules/toastify-js', express.static(path.join(__dirname, '../node_modules/toastify-js')));
 
