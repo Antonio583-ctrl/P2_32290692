@@ -79,10 +79,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(i18nextMiddleware.handle(i18next, {
-  ignoreRoutes: ['/public', '/assets'], // Ignora rutas estáticas
-  removeLngFromUrl: false // Mantiene el parámetro ?lng=en en URLs
-}));
+app.use(i18nextMiddleware.handle(i18next));
+// , {
+//   ignoreRoutes: ['/public', '/assets'], // Ignora rutas estáticas
+//   removeLngFromUrl: false // Mantiene el parámetro ?lng=en en URLs
+// }));
 
 // app.use((req, res, next) => {
 //   console.log('Idioma detectado:', req.language);
