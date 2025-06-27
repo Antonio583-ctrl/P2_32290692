@@ -208,12 +208,22 @@ app.use(session({
   }
 }));
 
+// Middlewares básicos
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/api/auth/status', (req, res) => {
+  res.json({ authenticated: !!req.session.user });
+});
+// Rutas
+app.use('/api/auth', authRoutes);
+
+
 // 6. Middlewares de body y estáticos
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, 'Vista')));
