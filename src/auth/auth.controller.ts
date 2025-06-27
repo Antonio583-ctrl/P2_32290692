@@ -24,14 +24,6 @@ export const login = async (req: Request, res: Response) => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'credenciales incorrectas';
-
-    if (req.xhr || req.headers.accept?.includes('application/json')) {
-      return res.status(401).json({ 
-        success: false,
-        error: message,
-        toast: req.t('login.errors.invalid_credentials') 
-      });
-    }
     
     // Respuesta renderizada para HTML
     return res.status(401)
