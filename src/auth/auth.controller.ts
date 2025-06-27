@@ -24,14 +24,27 @@ export const login = async (req: Request, res: Response) => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'credenciales incorrectas';
-    res.status(401)
-     .set('Content-Type', 'text/html') // ¡Forzar HTML!
-     .render('login', {
-       error: message,
-       username: req.body.username || '',
-       isAdmin: req.session?.user?.role === 'admin',
-       showFooter: false,
-     });
+
+    res.status(401).send(`
+      <!DOCTYPE html>
+      <html>
+        <head><title>Error</title></head>
+        <body>
+          <div class="error">${message}</div>
+          <!-- Redirigir o incluir tu formulario de login aquí -->
+        </body>
+      </html>
+    `);
+    
+    // res.status(401)
+    //  .set('Content-Type', 'text/html') // ¡Forzar HTML!
+    //  .render('login', {
+    //    error: message,
+    //    username: req.body.username || '',
+    //    isAdmin: req.session?.user?.role === 'admin',
+    //    showFooter: false,
+    //  });
+    
     // res.status(401).render('login', {
     //   error: 'invalid_credentials',
     //   username: req.body.username || '',
