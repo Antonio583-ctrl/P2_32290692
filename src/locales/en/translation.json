@@ -1,4 +1,29 @@
-{
+{ 
+  "meta": {
+    "title": "Vestiaire Royal - Luxury Clothing Rental",
+    "description": "Discover the best selection of exclusive garments for your events.",
+    "og": {
+      "title": "Vestiaire Royal - Luxury Clothing Rental",
+      "description": "Discover the best selection of exclusive garments for your events.",
+      "url": "https://mysite.com/",
+      "image": "/collection/Maroon.jpeg"
+    },
+    "pages": {
+      "home": {
+        "title": "Vestiaire Royal - Home"
+      },
+      "catalog": {
+        "title": "Vestiaire Royal - Catalog"
+      },
+      "login": {
+        "title": "Vestiaire Royal - Login"
+      },
+      "payment": {
+        "title": "Vestiaire Royal - Payment Confirmation"
+      }
+    }
+  },
+
   "header": {
     "nav": {
       "home": "Home",
@@ -202,6 +227,10 @@
       "required_field": "Please fill out this field",
       "username_required": "Username is required",
       "password_required": "Password is required"
+    },
+    "errors": {
+      "invalid_credentials": "Invalid credentials. Please check your username and password.",
+      "account_locked": "Your account has been locked due to multiple failed attempts. Please contact the administrator."
     }
   },
 
