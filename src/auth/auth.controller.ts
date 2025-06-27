@@ -24,10 +24,11 @@ export const login = async (req: Request, res: Response) => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : 'credenciales incorrectas';
+    const isAdmin = req.session?.user?.role === 'admin';
 
     res.render('login', { 
         error: error, 
-        username: '',
+        username: req.body.username || '',
         title: req.t('meta.pages.login.title'),
         description: req.t('meta.description'),
         ogTitle: req.t('meta.og.title'),
@@ -35,7 +36,7 @@ export const login = async (req: Request, res: Response) => {
         ogUrl: req.t('meta.og.url'),
         ogImage: req.t('meta.og.image'),
         showFooter: false,
-        req.session?.user?.role === 'admin'
+        isAdmin
     });
     
     // Respuesta renderizada para HTML
