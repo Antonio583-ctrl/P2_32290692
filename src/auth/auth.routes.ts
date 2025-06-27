@@ -6,6 +6,7 @@ import passport from 'passport';
 const router = Router();
 
 router.post('/login', login);
+router.post('/api/auth/login', login);
 router.get('/logout', logout);
 router.post('/register', isAuthenticated, isAdmin, register);
 
