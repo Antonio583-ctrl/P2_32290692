@@ -146,14 +146,14 @@
     "perDay": "day",
     "rent": "Rent",
     "products": {
-      "maroonSuit": "Elegant Maroon Suit",
-      "blueSuit": "Navy Blue Suit",
-      "redDress": "Passion Red Dress",
-      "casualOutfit": "Premium Casual Outfit",
-      "graySuit": "Formal Gray Suit",
-      "whiteOutfit": "Minimalist White Outfit",
-      "blackSuit": "Black Tailored Suit",
-      "goldenDress": "Festive Golden Dress"
+      "maroonSuit": "Elegant Brown Suit",
+      "blueSuit": "Elegant White Suit",
+      "redDress": "Stylish Brown Coat",
+      "casualOutfit": "Formal Black Suit",
+      "graySuit": "White Gala Suit",
+      "whiteOutfit": "Sophisticated Black Ensemble",
+      "blackSuit": "Elegant Floral Suit",
+      "goldenDress": "Contrasted White Coat"
     }
   },
 
