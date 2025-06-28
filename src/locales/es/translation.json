@@ -5,7 +5,7 @@
     "og": {
       "title": "Vestiaire Royal - Alquiler de Ropa de Lujo",
       "description": "Descubre la mejor selección de prendas exclusivas para tus eventos.",
-      "url": "https://misitio.com/",
+      "url": "https://p2-32290692-1.onrender.com/",
       "image": "/coleccion/Maroon.jpeg"
     },
     "pages": {
@@ -20,6 +20,14 @@
       },
       "payment": {
         "title": "Vestiaire Royal - Confirmación de Pago"
+      },
+      "register": {
+        "title": "Formulario de Contacto - Vestiaire Royal",
+        "description": "Contáctanos para reservar tu prenda de lujo o resolver tus dudas.",
+        "ogTitle": "Formulario de Contacto - Vestiaire Royal",
+        "ogDescription": "Contáctanos para reservar tu prenda de lujo o resolver tus dudas.",
+        "ogUrl": "https://p2-32290692-1.onrender.com/registro",
+        "ogImage": "/coleccion/men_outfit_1.jpeg"
       }
     }
   },
