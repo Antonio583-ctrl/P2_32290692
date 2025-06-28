@@ -90,6 +90,7 @@
       }
     },
     "contacts": {
+      "titlePage": "Contacts - Admin",
       "title": "Registered Contacts",
       "searchPlaceholder": "Search by name or email...",
       "table": {
@@ -105,6 +106,7 @@
       }
     },
     "payments": {
+      "titlePage": "Payments - Admin",
       "title": "Completed Payments",
       "filters": {
         "service": "Service",
