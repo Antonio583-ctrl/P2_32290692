@@ -14,7 +14,7 @@ router.get('/payments', isAuthenticated, isAdmin, async (req, res) => {
     // formatFecha, 
     formatFecha: (d: any) => formatFecha(d, req.language),
     formatMoneda: (m: any) => formatMoneda(m, req.language),
-    title: 'Pagos - Administración' });
+    title: req.t('admin.payments.titlePage') });
 });
 
 export default router;
