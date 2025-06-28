@@ -147,13 +147,13 @@
     "rent": "Alquilar",
     "products": {
       "maroonSuit": "Traje Marrón Elegante",
-      "blueSuit": "Traje Azul Noche",
-      "redDress": "Vestido Rojo Pasión",
-      "casualOutfit": "Conjunto Casual Premium",
-      "graySuit": "Traje de Etiqueta Gris",
-      "whiteOutfit": "Conjunto Blanco Minimalista",
-      "blackSuit": "Traje Sastre Negro",
-      "goldenDress": "Vestido Dorado Festivo"
+      "blueSuit": "Traje Blanco Elegante",
+      "redDress": "Abrigo Marrón con Estilo",
+      "casualOutfit": "Traje Negro Formal",
+      "graySuit": "Traje Blanco de Gala",
+      "whiteOutfit": "Conjunto Negro Sofisticado",
+      "blackSuit": "Traje Floral Elegante",
+      "goldenDress": "Abrigo Blanco Contrastado"
     }
   },
 
