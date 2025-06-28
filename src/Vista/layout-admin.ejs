@@ -16,6 +16,25 @@
       <a href="/contacts"><i class="fa fa-address-book"></i> <%= t('admin.sidebar.menu.contacts') %></a>
       <a href="/payments"><i class="fa fa-credit-card"></i> <%= t('admin.sidebar.menu.payments') %></a>
       <a href="/api/auth/logout"><i class="fa fa-sign-out"></i> <%= t('admin.sidebar.menu.logout') %></a>
+
+      <div class="language-selector sidebar__language-selector">
+        <div class="sidebar__language-wrapper">
+          <button class="language-button sidebar__language-button" aria-label="Language selector">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </button>
+          <form method="get" action="" class="language-dropdown sidebar__language-dropdown">
+            <select name="lng" onchange="this.form.submit()">
+              <option value="es" <%= lang === 'es' ? 'selected' : '' %>><%= t('header.languageSelector.spanish') %></option>
+              <option value="en" <%= lang === 'en' ? 'selected' : '' %>><%= t('header.languageSelector.english') %></option>
+            </select>
+          </form>
+        </div>
+      </div>
+
     </nav>
   </aside>
   <main class="admin-content">
