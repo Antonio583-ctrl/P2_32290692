@@ -5,7 +5,7 @@
     "og": {
       "title": "Vestiaire Royal - Luxury Clothing Rental",
       "description": "Discover the best selection of exclusive garments for your events.",
-      "url": "https://mysite.com/",
+      "url": "https://p2-32290692-1.onrender.com/",
       "image": "/collection/Maroon.jpeg"
     },
     "pages": {
@@ -20,6 +20,14 @@
       },
       "payment": {
         "title": "Vestiaire Royal - Payment Confirmation"
+      },
+      "register": {
+        "title": "Contact Form - Vestiaire Royal",
+        "description": "Contact us to reserve your luxury garment or solve your questions.",
+        "ogTitle": "Contact Form - Vestiaire Royal",
+        "ogDescription": "Contact us to reserve your luxury garment or solve your questions.",
+        "ogUrl": "https://p2-32290692-1.onrender.com/registro",
+        "ogImage": "/collection/men_outfit_1.jpeg"
       }
     }
   },
