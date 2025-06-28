@@ -446,6 +446,19 @@ body {
   margin-left: 1.1rem;
 }
 
+.sidebar__language-selector {
+  margin: 15px 0;
+  padding: 10px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.sidebar__language-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
 .language-button {
   background: none;
   border: none;
@@ -488,6 +501,19 @@ body {
   padding: 0.5rem;
   min-width: 140px;
   border: 1px solid #444;
+}
+
+.sidebar__language-dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  padding: 0.5rem;
+  min-width: 140px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 }
 
 .language-selector:hover .language-dropdown {
