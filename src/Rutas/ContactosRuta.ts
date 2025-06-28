@@ -5,17 +5,16 @@ const router = Router();
 const controlador = new ContactosControlador();
 
 
-router
-  .route('/registro')
+router.route('/registro')
   .get((req, res) => {
     const isAdmin = req.session?.user?.role === 'admin';
     res.render('registro', {
-      title: 'Formulario de Contacto - Vestiaire Royal',
-      description: 'Contáctanos para reservar tu prenda de lujo o resolver tus dudas.',
-      ogTitle: 'Formulario de Contacto - Vestiaire Royal',
-      ogDescription: 'Contáctanos para reservar tu prenda de lujo o resolver tus dudas.',
-      ogUrl: 'https://misitio.com/registro',
-      ogImage: '/coleccion/men oufit 1.jpeg',
+      title: req.t('meta.pages.register.title'),
+      description: req.t('meta.pages.register.description'),
+      ogTitle: req.t('meta.pages.register.ogTitle'),
+      ogDescription: req.t('meta.pages.register.ogDescription'),
+      ogUrl: req.t('meta.pages.register.ogUrl'),
+      ogImage: req.t('meta.pages.register.ogImage'),
       showFooter: false,
       isAdmin
     });
