@@ -14,7 +14,7 @@ router.get('/contacts', isAuthenticated, isAdmin, async (req, res) => {
     // formatFecha,
     formatFecha: (d: any) => formatFecha(d, req.language),
     formatMoneda: (m: any) => formatMoneda(m, req.language),
-    title: 'Contactos - Administración' });
+    title: req.t('admin.contacts.titlePage') });
 });
 
 export default router;
